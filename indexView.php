@@ -36,7 +36,7 @@ $id=$rs['id'];
 $likes=$rs['likes'];
 //echo '<td><a href="03.delete.php?id=', $rs['id'], '">刪</a> </td></tr>';
 echo "<td><a href='05.like.php?id=$id'>讚($likes)</a>";
-echo " - <a href='03.delete.php?id=$id'>刪</a>";
+echo " - <a href='03.deleteMVC.php?id=$id'>刪</a>";
 echo " - <a href='04.editform.php?id=$id'>改</a> </td></tr>";
 
 }
