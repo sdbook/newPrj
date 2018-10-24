@@ -2,6 +2,7 @@
 require("dbconfig.php");
 function login($id, $pwd) 
 {
+    global $db;
     $_SESSION['uID'] = '';
 	$_SESSION['role'] = '';
     if ($id> " ") {
