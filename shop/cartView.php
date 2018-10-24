@@ -1,13 +1,14 @@
-<?php
-require("prdModel.php");
-$result=getPrdList();
+ï»¿<?php
+require("cartModel.php");
 //checkLogin();
+$result=showCart();
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>µL¼ÐÃD¤å¥ó</title>
+<title>ç„¡æ¨™é¡Œæ–‡ä»¶</title>
 <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
@@ -30,9 +31,9 @@ while (	$rs = mysqli_fetch_assoc($result)) {
 	"</td><td>" , $rs['name'],
 	"</td><td>" , $rs['price'];
 $id=$rs['prdID'];
-//echo '<td><a href="03.delete.php?id=', $rs['id'], '">§R</a> </td></tr>';
-echo "<td><a href='03.delete.php?id=$id'>§R</a>";
-echo " - <a href='04.editform.php?id=$id'>§ï</a> </td></tr>";
+//echo '<td><a href="03.delete.php?id=', $rs['id'], '">åˆª</a> </td></tr>';
+echo "<td><a href='03.delete.php?id=$id'>åˆª</a>";
+echo " - <a href='04.editform.php?id=$id'>æ”¹</a> </td></tr>";
 
 }
 ?>

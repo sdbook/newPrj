@@ -3,7 +3,7 @@ require("dbconfig.php");
 function login($id, $pwd) 
 {
     global $db;
-    $_SESSION['uID'] = '';
+    $_SESSION['uID'] = 0;
 	$_SESSION['role'] = '';
     if ($id> " ") {
         $sql = "select * from user where loginID=? and password=?";
