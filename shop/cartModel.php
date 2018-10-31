@@ -24,4 +24,13 @@ function add2Cart($prdID, $uID)
     return;
 }
 
+function removeCartItem($ID) 
+{
+    global $db;
+    $sql = "delete from cartitem where serno=?";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $ID);
+    mysqli_stmt_execute($stmt); //執行SQL
+    return;
+}
 ?>

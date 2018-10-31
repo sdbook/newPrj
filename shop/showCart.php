@@ -15,28 +15,32 @@ $result=showCart(getCurrentUser());
 
 <body>
 
-<p>my guest book !!</p>
+<p>my shopping cart !!</p>
 <hr />
 <table width="200" border="1" class="">
   <tr>
     <td>id</td>
     <td>name</td>
     <td>unit price</td>
+    <td>amount</td>
+    <td>total</td>
 <td>XXX</td>
   </tr>
 <?php
-
+$tot=0;
 while (	$rs = mysqli_fetch_assoc($result)) {
 
 	echo "<tr><td>" , $rs['prdID'] ,
 	"</td><td>" , $rs['name'],
-	"</td><td>" , $rs['price'];
-$id=$rs['prdID'];
-//echo '<td><a href="03.delete.php?id=', $rs['id'], '">刪</a> </td></tr>';
-echo "<td><a href='add2Cart.php?id=$id'>加</a>";
-echo " - <a href='04.editform.php?id=$id'>改</a> </td></tr>";
-
+	"</td><td>" , $rs['price'],
+	"</td><td>" , $rs['amount'],
+	"</td><td>" , $rs['price'] * $rs['amount'];
+    $tot += $rs['price'] * $rs['amount'];
+    $id=$rs['serno'];
+    //echo '<td><a href="03.delete.php?id=', $rs['id'], '">刪</a> </td></tr>';
+    echo "<td><a href='removeFromCart.php?id=$id'>刪</a>";
 }
+echo "<tr><td>Total: $tot</td><td><a href='checkout.php'>結帳</a></td></tr>";
 ?>
 </table>
 </body>
