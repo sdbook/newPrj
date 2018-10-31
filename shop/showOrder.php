@@ -1,7 +1,8 @@
 ﻿<?php
-require("prdModel.php");
+require("orderModel.php");
+require("userModel.php");
 //checkLogin();
-$result=getPrdList();
+$result=getOrderList();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14,31 +15,34 @@ $result=getPrdList();
 
 <body>
 
-<p>my guest book !!</p>
+<p>my shopping cart !!</p>
 <hr />
 <table width="200" border="1" class="">
   <tr>
-    <td>id</td>
+    <td>Order ID</td>
+    <td>Prd ID</td>
     <td>name</td>
     <td>unit price</td>
+    <td>amount</td>
+    <td>total</td>
 <td>XXX</td>
   </tr>
 <?php
-
+$tot=0;
 while (	$rs = mysqli_fetch_assoc($result)) {
 
-	echo "<tr><td>" , $rs['prdID'] ,
+	echo "<tr><td>" , $rs['oID'] ,
+    "<tr><td>" , $rs['prdID'] ,
 	"</td><td>" , $rs['name'],
-	"</td><td>" , $rs['price'];
-$id=$rs['prdID'];
-//echo '<td><a href="03.delete.php?id=', $rs['id'], '">刪</a> </td></tr>';
-echo "<td><a href='add2Cart.php?id=$id'>加</a>";
-echo " - <a href='04.editform.php?id=$id'>改</a> </td></tr>";
+	"</td><td>" , $rs['price'],
+	"</td><td>" , $rs['amount'],
+	"</td><td>" , $rs['price'] * $rs['amount'],
+    "</td></tr>";
+
+    $id=$rs['serno'];
 
 }
 ?>
 </table>
-
-<a href="showOrder.php">show all orders</a>
 </body>
 </html>

@@ -33,4 +33,14 @@ function removeCartItem($ID)
     mysqli_stmt_execute($stmt); //執行SQL
     return;
 }
+
+function removeAllItems($uID)
+{
+    global $db;
+    $sql = "delete from cartitem where uID=?";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $uID);
+    mysqli_stmt_execute($stmt); //執行SQL
+    return;
+}
 ?>
