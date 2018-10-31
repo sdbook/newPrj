@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-10-24 05:53:30
+-- 產生時間： 2018-10-31 05:06:41
 -- 伺服器版本: 10.1.35-MariaDB
 -- PHP 版本： 7.2.9
 
@@ -95,6 +95,14 @@ CREATE TABLE `ord` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 資料表的匯出資料 `ord`
+--
+
+INSERT INTO `ord` (`oID`, `uID`, `status`) VALUES
+(1, 1, 0),
+(2, 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +116,15 @@ CREATE TABLE `orderitem` (
   `prdID` int(11) NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `orderitem`
+--
+
+INSERT INTO `orderitem` (`serno`, `oID`, `prdID`, `amount`) VALUES
+(1, 2, 1, 1),
+(2, 2, 3, 1),
+(3, 2, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -131,6 +148,52 @@ INSERT INTO `product` (`prdID`, `name`, `price`) VALUES
 (2, 'pencil', 20),
 (3, 'pen', 25),
 (4, 'coke', 40);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `saleslog`
+--
+
+DROP TABLE IF EXISTS `saleslog`;
+CREATE TABLE `saleslog` (
+  `serno` int(11) NOT NULL,
+  `saleDate` datetime NOT NULL,
+  `prdID` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `saleslog`
+--
+
+INSERT INTO `saleslog` (`serno`, `saleDate`, `prdID`, `amount`) VALUES
+(1, '2018-10-29 09:52:47', 1, 5),
+(3, '2018-09-09 00:00:00', 2, 10),
+(4, '2017-01-30 00:00:00', 7, 9),
+(5, '2018-10-29 10:03:31', 1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `team`
+--
+
+DROP TABLE IF EXISTS `team`;
+CREATE TABLE `team` (
+  `teamID` int(11) NOT NULL,
+  `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `team`
+--
+
+INSERT INTO `team` (`teamID`, `name`) VALUES
+(1, 'IM'),
+(2, 'CSIE'),
+(3, 'IBS'),
+(4, 'Hi');
 
 -- --------------------------------------------------------
 
@@ -196,6 +259,18 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`prdID`);
 
 --
+-- 資料表索引 `saleslog`
+--
+ALTER TABLE `saleslog`
+  ADD PRIMARY KEY (`serno`);
+
+--
+-- 資料表索引 `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`teamID`);
+
+--
 -- 資料表索引 `user`
 --
 ALTER TABLE `user`
@@ -227,19 +302,31 @@ ALTER TABLE `guestbook`
 -- 使用資料表 AUTO_INCREMENT `ord`
 --
 ALTER TABLE `ord`
-  MODIFY `oID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `oID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表 AUTO_INCREMENT `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `serno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `serno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表 AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
   MODIFY `prdID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- 使用資料表 AUTO_INCREMENT `saleslog`
+--
+ALTER TABLE `saleslog`
+  MODIFY `serno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- 使用資料表 AUTO_INCREMENT `team`
+--
+ALTER TABLE `team`
+  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表 AUTO_INCREMENT `user`
